@@ -30,8 +30,8 @@ public class TaskController {
             return taskService.addTask(task);
     }
 
-    @PutMapping
-    public Task updateTask(@RequestBody Task task) throws Exception {
-        return taskService.updateTask(task);
+    @PutMapping("/{id}")
+    public Task updateTask(@RequestBody Task task, @PathVariable Long id) throws Exception {
+        return taskService.updateTask(task, id);
     }
 }
