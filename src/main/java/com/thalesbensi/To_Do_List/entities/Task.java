@@ -2,6 +2,7 @@ package com.thalesbensi.To_Do_List.entities;
 
 import java.util.Date;
 
+import jakarta.validation.constraints.NotBlank;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -25,7 +26,9 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "This field cannot be blank")
     private String title;
+    
     private String description;
     
     @Enumerated(EnumType.STRING)
