@@ -1,16 +1,17 @@
 package com.thalesbensi.To_Do_List.services;
 
 
-import com.thalesbensi.To_Do_List.entities.Task;
-import com.thalesbensi.To_Do_List.repositories.TaskRepository;
-
-import jakarta.persistence.EntityNotFoundException;
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
+import com.thalesbensi.To_Do_List.entities.Task;
+import com.thalesbensi.To_Do_List.repositories.TaskRepository;
+
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 
 @Service
 public class TaskService {
@@ -26,11 +27,11 @@ public class TaskService {
         return taskRepository.findById(id).get();
     }
 
-    public Task addTask(Task task){
+    public Task addTask(@Valid Task task){
         return taskRepository.save(task);
     }
 
-    public Task updateTask(Task task, Long id) {
+    public Task updateTask(@Valid Task task, Long id) {
         Task updatedTask = taskRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Task not found for ID: " + id));
 
