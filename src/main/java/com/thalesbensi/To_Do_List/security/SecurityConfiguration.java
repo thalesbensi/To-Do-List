@@ -1,4 +1,4 @@
-package security;
+package com.thalesbensi.To_Do_List.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,12 +14,12 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration{
+public class SecurityConfiguration {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpsecurity) throws Exception {
-	    return httpsecurity
-	            .csrf(csrf -> csrf.disable()) 
+	    return httpsecurity 
+	    		.csrf(csrf -> csrf.disable())
 	            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) 
 	            .authorizeHttpRequests(authorize -> authorize
 	            		.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()

@@ -18,7 +18,7 @@ import com.thalesbensi.To_Do_List.repositories.UserRepository;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/auth")
 public class AuthenticationController {
 		
 	@Autowired
